@@ -75,6 +75,10 @@ net = LeNet()
 print(net)
 
 
+if os.path.isfile('net_params.pkl'):
+    net.load_state_dict(torch.load('net_params.pkl'))
+
+
 # optimizer & Loss
 optimizer = torch.optim.Adam(net.parameters(), lr=LR)
 loss_func = nn.CrossEntropyLoss()
@@ -95,7 +99,7 @@ for epoch in range(EPOCH):
 
         if step % 50 == 0:
             test_prediction = net(test_images)
-            predicted = torch.max(test_prediction, 1)[1].data
+            _, predicted = torch.max(test_prediction.data, 1)
             test_accuracy = sum(predicted == test_labels)/float(test_labels.size(0))
 
             print('Epoch: %d, Step: %d, Training Loss: %.4f, Test Accuracy: %.3f' % 
