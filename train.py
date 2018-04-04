@@ -75,8 +75,8 @@ net = LeNet()
 print(net)
 
 
-if os.path.isfile('net_params.pkl'):
-    net.load_state_dict(torch.load('net_params.pkl'))
+if os.path.isfile('saves/dogcat_lenet_params.pkl'):
+    net.load_state_dict(torch.load('saves/dogcat_lenet_params.pkl'))
 
 
 # optimizer & Loss
@@ -105,6 +105,6 @@ for epoch in range(EPOCH):
             print('Epoch: %d, Step: %d, Training Loss: %.4f, Test Accuracy: %.3f' % 
                 (epoch, step, loss.data[0], test_accuracy))
 
-            torch.save(net.state_dict(), 'net_params.pkl')  # 只保存网络中的参数（速度快，占内存少）
+            torch.save(net.state_dict(), 'saves/dogcat_lenet_params.pkl')  # 只保存网络中的参数（速度快，占内存少）
 
 

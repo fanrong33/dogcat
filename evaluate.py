@@ -7,12 +7,8 @@ import os
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
-import torch.nn.functional as F
 import torch.utils.data as Data
 import torchvision
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 from datasets import DOGCAT
 from models import LeNet
@@ -42,15 +38,14 @@ net = LeNet()
 print(net)
 
 
-if os.path.isfile('net_params.pkl'):
-    net.load_state_dict(torch.load('net_params.pkl'))
+if os.path.isfile('saves/dogcat_lenet_params.pkl'):
+    net.load_state_dict(torch.load('saves/dogcat_lenet_params.pkl'))
 else:
-    print("net_params.pkl don't exists.")
+    print("dogcat_lenet_params.pkl don't exists.")
     exit()
 
 
 # Test the Model
-# 最后我们再来取1个batch size数据, 看看预测的值到底对不对:
 total = 0
 correct = 0
 for images, labels in test_loader:
@@ -61,4 +56,5 @@ for images, labels in test_loader:
     correct += sum(predicted == labels)
     
 print('Test Accuracy of the model on the %d test images: %d %%' % (total, correct / total * 100)) 
+
 
