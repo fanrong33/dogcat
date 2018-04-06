@@ -89,9 +89,7 @@ for epoch in range(EPOCH):
 
         images = Variable(images)
         labels = Variable(labels)
-        print(images.data.numpy())
-        print(labels.data.numpy())
-        exit()
+        
         
         optimizer.zero_grad()
 
