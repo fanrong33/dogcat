@@ -23,9 +23,9 @@ torch.manual_seed(1)
 
 # Load Datasets
 transform = torchvision.transforms.Compose([
-    torchvision.transforms.Resize(28),  # 缩放图片(Image), 保持长宽比不变，最短边为224像素
+    torchvision.transforms.Resize(28),      # 缩放图片(Image), 保持长宽比不变，最短边为224像素
     torchvision.transforms.CenterCrop(28),  # 从图片中间切出224*224的图片
-    torchvision.transforms.ToTensor(),  # 将图片(Image)转成Tensor, 归一化至[0, 1]
+    torchvision.transforms.ToTensor(),      # 将图片(Image)转成Tensor, 归一化至[0, 1]
     torchvision.transforms.Normalize(mean=[.5,.5,.5], std=[.5, .5, .5])  # 标准化至[-1, 1], 规定均值和标准差
 ])
 
